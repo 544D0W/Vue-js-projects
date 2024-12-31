@@ -72,6 +72,7 @@ const app = Vue.createApp({
             const DemmageEffect  = Dammage( 8 , 15);
             this.HealthOfPlayer -= DemmageEffect;
             this.GameLogsFun("Monster" ,"Attack" , DemmageEffect);
+            
            
        
         },
