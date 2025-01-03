@@ -3,7 +3,9 @@
      <base-button @click="SelectTheResources('stored-resources')">Stored resources</base-button>
      <base-button @click="SelectTheResources('add-resources')">Add Resource</base-button>
     </base-card>
-    <component :is="selectTab"></component>
+    <keep-alive>
+        <component :is="selectTab"></component>
+    </keep-alive>
      
 </template>
 
@@ -39,7 +41,10 @@ export default {
     },
      provide() {
              return { 
-                resources : this.StoreResources
+                resources : this.StoreResources,
+                AddNew: this.AddNewResources,
+                deleteResource: this.removeResource
+
              };
         }
     ,
@@ -48,6 +53,20 @@ export default {
         SelectTheResources(tab){
             console.log(tab);
                      this.selectTab = tab;
+    },
+    AddNewResources(EnteredTitle , EnteredDescription , Enteredlink){ 
+             const NewData= { 
+                 id: new Date().toISOString(),
+                 title :  EnteredTitle,
+                 description: EnteredDescription,
+                 link:Enteredlink
+             } 
+            this.StoreResources.unshift(NewData);
+            this.selectTab='stored-resources';
+    },
+    removeResource(resId){
+            const resIndex = this.StoreResources.findIndex(res => res.id === resId);
+            this.StoreResources.splice(resIndex,1);
     }
     }
 }

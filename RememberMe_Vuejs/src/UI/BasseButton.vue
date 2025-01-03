@@ -29,10 +29,8 @@ export default {
 
 <style scoped>
 .button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 32px;
+  
+  padding: 10px 22px;
   background-color: #006aff;
   border: 8px solid #c0dfff;
   color: white;
@@ -40,6 +38,7 @@ export default {
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s;
+  margin-left: 0.7vh;
 }
 .text {
   font-size: 1.7em;
